@@ -1,6 +1,6 @@
 # GPSL Language
 
-**Generic Property Specification Language** (GPSL) is the language used by OBP2 for specifying the properties that should be verified during the analysis. Currently, it supports Linear Temporal Logic and Buchi Automata specifications.
+**Generic Property Specification Language** (GPSL) is the language used by OBP2 for specifying the properties that should be verified during the analysis. Currently, it supports Linear Temporal Logic, Buchi Automata, and NFA specifications.
 
 GPSL is **only** a *property-specification* language. Methodologically it is orthogonal to the formalisms used for *capturing the operational environment* (xGDL scenarios) and for *taming the state-space explosion* problem during model-checking (state-space decomposition, pruning through state-constraints - TLA, etc.).
 
