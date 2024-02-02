@@ -1,9 +1,11 @@
+import { GPSLEvaluator } from "./gpslEvaluator";
+
 export class GPSLAutomatonSemantics {
     automaton;
-    inputEvaluator;
-    constructor(automaton, evaluator) {
+    guardEvaluator;
+    constructor(automaton, inputEvaluator) {
         this.automaton = automaton;
-        this.inputEvaluator = evaluator;
+        this.guardEvaluator = new GPSLEvaluator(inputEvaluator);
     }
     initial() {
         return this.automaton.initialStates;
@@ -20,7 +22,7 @@ export class GPSLAutomatonSemantics {
                 currentPriority = transition.priority;
             }
             if (transition.priority === currentPriority) {
-                if (transition.guard.accept(this.inputEvaluator, input)) {
+                if (transition.guard.accept(this.guardEvaluator, input)) {
                     enabledTransitions.push(transition);
                     hasEnabledTransitionAtCurrentPriority = true;
                 }
