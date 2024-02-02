@@ -1,0 +1,20 @@
+{
+  "name": "gpsl-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/gpslReader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "antlr4": "4.13.1-patch-1",
+    "child_process": "^1.0.2",
+    "express": "^4.18.2",
+    "http": "0.0.1-security",
+    "node-fetch": "^3.3.2"
+  }
+}
