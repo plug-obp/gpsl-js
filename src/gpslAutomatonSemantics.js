@@ -37,4 +37,8 @@ export class GPSLAutomatonSemantics {
     execute(action, input, configuration) {
         return [action.target];
     }
+    //instead of exposing it here, we should expose it through the evaluate function.
+    isAccepting(configuration) {
+        return this.automaton.acceptStates.includes(configuration);
+    }
 }
