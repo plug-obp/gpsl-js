@@ -24,7 +24,16 @@ export class GPSLSyntaxBuilder extends gpslListener {
     exitAtom(ctx) {
         const value = ctx.ATOMINLINE().getText();
         const delimiter = value.substring(0, 1);
-        this.setValue(ctx, new stx.GPSLAtom(value.substring(1, value.length - 1), delimiter));
+        let atom = value.substring(1, value.length - 1);
+        switch (delimiter) {
+        case '|':
+            atom = atom.replace(/\\\|/g, '|');
+            break;
+        case '"':
+            atom = atom.replace(/\\"/g, '"');
+            break;
+        }
+        this.setValue(ctx, new stx.GPSLAtom(atom, delimiter));
     }
 
     exitLiteralExp(ctx) {

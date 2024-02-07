@@ -63,7 +63,7 @@ reserved: CONJUNCTION | DISJUNCTION | EQUIVALENCE | EVENTUALLY | FALSE | GLOBALL
 
 ATOMINLINE : PIPEATOM | QUOTEATOM;
 PIPEATOM : '|' ('\\|' | ~'|')* '|';
-QUOTEATOM: '"' ('"' | ~'"')* '"';
+QUOTEATOM: '"' ('\\"' | ~'"')* '"';
 
 IDENTIFIER : [a-zA-Z][a-zA-Z_0-9]*;
 NATURAL: [0-9]+;

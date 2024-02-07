@@ -31,9 +31,9 @@ test('unary negation', () => {
 });
 
 test('unary next', () => {
-    expect(readExpression('X true')).toEqual(new stx.GPSLNext('X', new stx.GPSLTrue()));
-    expect(readExpression('next false')).toEqual(new stx.GPSLNext('next', new stx.GPSLFalse()));
-    expect(readExpression('N x')).toEqual(new stx.GPSLNext('N', new stx.GPSLReference('x')));
+    expect(readExpression('◯ true')).toEqual(new stx.GPSLNext('◯', new stx.GPSLTrue()));
+    expect(readExpression('◯ false')).toEqual(new stx.GPSLNext('◯', new stx.GPSLFalse()));
+    expect(readExpression('◯ x')).toEqual(new stx.GPSLNext('◯', new stx.GPSLReference('x')));
     expect(readExpression('◯ zm')).toEqual(new stx.GPSLNext('◯', new stx.GPSLReference('zm')));
-    expect(readExpression('Xo true')).toEqual(new stx.GPSLNext('X', new stx.GPSLNext('o', new stx.GPSLTrue())));
+    expect(readExpression('◯◯ true')).toEqual(new stx.GPSLNext('◯', new stx.GPSLNext('◯', new stx.GPSLTrue())));
 });
