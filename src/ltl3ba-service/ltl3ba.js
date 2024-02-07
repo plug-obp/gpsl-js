@@ -21,6 +21,11 @@ app.get('/ltl3ba/:formula', (req, res) => {
     });
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
+});
+
+server.on('error', (err) => {
+    console.error('Server error:', err.message.substring(0, 100) + '...');
+    server.close();
 });
