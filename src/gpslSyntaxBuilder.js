@@ -2,7 +2,7 @@ import gpslParser from '../generated/grammar/gpslParser.js';
 import gpslListener from '../generated/grammar/gpslListener.js';
 import * as stx from './gpslSyntaxModel.js';
 
-export class GPSLSyntaxTreeMaker extends gpslListener {
+export class GPSLSyntaxBuilder extends gpslListener {
     constructor() {
         super();
         this.map = new Map();

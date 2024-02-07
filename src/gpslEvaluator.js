@@ -7,43 +7,43 @@ export class GPSLEvaluator extends GPSLVisitor {
         super();
         this.atomEvaluator = atomEvaluator;
     }
-    visitAtom(element, input) {
-        return this.atomEvaluator(element.value, input);
+    async visitAtom(element, input) {
+        return await this.atomEvaluator(element.value, input);
     }
-    visitTrue(element, input) {
+    async visitTrue(element, input) {
         return true;
     }
-    visitFalse(element, input) {
+    async visitFalse(element, input) {
         return false;
     }
-    visitReference(element, input) {
+    async visitReference(element, input) {
         return element.expression.accept(this, input);
     }
-    visitExpression(element, input) {
+    async visitExpression(element, input) {
         throw new Error(`The GPSL evaluator does not support ${element.constructor.name} expressions.`);
     }
-    visitNegation(element, input) {
-        return !element.expression.accept(this, input);
+    async visitNegation(element, input) {
+        return ! await element.expression.accept(this, input);
     }
-    visitConjunction(element, input) {
-        return element.left.accept(this, input) && element.right.accept(this, input);
+    async visitConjunction(element, input) {
+        return await element.left.accept(this, input) && await element.right.accept(this, input);
     }
-    visitDisjunction(element, input) {
-        return element.left.accept(this, input) || element.right.accept(this, input);
+    async visitDisjunction(element, input) {
+        return await element.left.accept(this, input) || await element.right.accept(this, input);
     }
-    visitExclusiveDisjunction(element, input) {
-        return element.left.accept(this, input) !== element.right.accept(this, input);
+    async visitExclusiveDisjunction(element, input) {
+        return await element.left.accept(this, input) !== await element.right.accept(this, input);
     }
-    visitImplication(element, input) {
-        return !element.left.accept(this, input) || element.right.accept(this, input);
+    async visitImplication(element, input) {
+        return ! await element.left.accept(this, input) || await element.right.accept(this, input);
     }
-    visitEquivalence(element, input) {
-        return element.left.accept(this, input) === element.right.accept(this, input);
+    async visitEquivalence(element, input) {
+        return await element.left.accept(this, input) === await element.right.accept(this, input);
     }
-    visitLetExpression(element, input) {
+    async visitLetExpression(element, input) {
         return element.expression.accept(this, input);
     }
-    visitExpressionDeclaration(element, input) {
+    async visitExpressionDeclaration(element, input) {
         return element.expression.accept(this, input);
     }
 }

@@ -1,7 +1,7 @@
 import antlr4 from 'antlr4';
 import gpslLexer from '../generated/grammar/gpslLexer.js';
 import gpslParser from '../generated/grammar/gpslParser.js';
-import {Context, GPSLSymbolResolver, GPSLSyntaxTreeMaker} from './gpslSyntaxTreeMaker.js';
+import {Context, GPSLSymbolResolver, GPSLSyntaxBuilder} from './gpslSyntaxBuilder.js';
 import { ltlToAutomaton } from './gpsl2automata.js';
 
 
@@ -27,7 +27,7 @@ const tree = parser.block();
 
 console.log(tree.toStringTree(parser.ruleNames));
 
-const syntaxTreeMaker = new GPSLSyntaxTreeMaker();
+const syntaxTreeMaker = new GPSLSyntaxBuilder();
 antlr4.tree.ParseTreeWalker.DEFAULT.walk(syntaxTreeMaker, tree);
 let syntaxTree = syntaxTreeMaker.tree;
 syntaxTree.accept(new GPSLSymbolResolver(), new Context());

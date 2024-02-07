@@ -1,34 +1,40 @@
 import antlr4 from 'antlr4';
 import gpslLexer from '../generated/grammar/gpslLexer.js';
 import gpslParser from '../generated/grammar/gpslParser.js';
-import {Context, GPSLSymbolResolver, GPSLSyntaxTreeMaker} from './gpslSyntaxTreeMaker.js';
+import {Context, GPSLSymbolResolver, GPSLSyntaxBuilder} from './gpslSyntaxBuilder.js';
 
-
-export function readExpression(input) {
+export function antlr4Parser(input) {
 	const chars = new antlr4.InputStream(input);
 	const lexer = new gpslLexer(chars);
 	const tokens = new antlr4.CommonTokenStream(lexer);
-	const parser = new gpslParser(tokens);
-	const tree = parser.formula();
-
-	const syntaxTreeMaker = new GPSLSyntaxTreeMaker();
-	antlr4.tree.ParseTreeWalker.DEFAULT.walk(syntaxTreeMaker, tree);
-	return syntaxTreeMaker.map.get(tree);
+	return new gpslParser(tokens);
 }
 
-export function readBlock(input) {
-	const chars = new antlr4.InputStream(input);
-	const lexer = new gpslLexer(chars);
-	const tokens = new antlr4.CommonTokenStream(lexer);
-	const parser = new gpslParser(tokens);
-	const tree = parser.block();
+function buildSyntaxModel(antlr4Tree) {
+	const syntaxBuilder = new GPSLSyntaxBuilder();
+	antlr4.tree.ParseTreeWalker.DEFAULT.walk(syntaxBuilder, antlr4Tree);
+	return syntaxBuilder.map.get(antlr4Tree);
+}
 
-	const syntaxTreeMaker = new GPSLSyntaxTreeMaker();
-	antlr4.tree.ParseTreeWalker.DEFAULT.walk(syntaxTreeMaker, tree);
-	return syntaxTreeMaker.tree;
+export function readExpression(input) {
+	const parser = antlr4Parser(input);
+	const tree = parser.formula();
+	return buildSyntaxModel(tree);
+}
+
+export function readDeclarations(input) {
+	const parser = antlr4Parser(input);
+	const tree = parser.block();
+	return buildSyntaxModel(tree);
 }
 
 export function link(tree, context = new Map()) {
 	tree.accept(new GPSLSymbolResolver(), new Context(context));
 	tree;
+}
+
+export function readAndLinkDeclarations(input) {
+	const declarations = readDeclarations(input);
+	link(declarations);
+	return declarations;
 }
