@@ -191,7 +191,7 @@ export class GPSLState extends GPSLSyntaxTreeElement {
     hashCode() {
         let hash = 0;
         for (let i = 0; i < this.name.length; i++) {
-            let char = this.name.charCodeAt(i);
+            const char = this.name.charCodeAt(i);
             hash = ((hash << 5) - hash) + char;
             hash |= 0; // Convert to 32bit integer
         }
