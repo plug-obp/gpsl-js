@@ -1,4 +1,4 @@
-import { GPSLEvaluator } from "./gpslEvaluator";
+import { GPSLEvaluator } from "./gpslEvaluator.js";
 
 export class GPSLAutomatonSemantics {
     automaton;

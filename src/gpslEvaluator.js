@@ -1,4 +1,4 @@
-import { GPSLVisitor } from "./gpslSyntaxModel";
+import { GPSLVisitor } from "./gpslSyntaxModel.js";
 
 //This class evaluates boolean GPSL expressions relying on an atomEvaluator for the atoms.
 export class GPSLEvaluator extends GPSLVisitor {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "GPSL Language in JavaScript",
   "main": "index.js",
+  "files": [ "src", "generated" ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
