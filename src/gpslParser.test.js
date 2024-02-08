@@ -117,3 +117,50 @@ test('weak-release', () => {
     expect(parseExpression('true WR false')).toBe('(formula (formula (literal true)) WR (formula (literal false)))');
     expect(parseExpression('true weak-release false')).toBe('(formula (formula (literal true)) weak-release (formula (literal false)))');
 });
+
+test('conjunction', () => {
+    expect(parseExpression('true and false')).toBe('(formula (formula (literal true)) and (formula (literal false)))');
+    expect(parseExpression('true & false')).toBe('(formula (formula (literal true)) & (formula (literal false)))');
+    expect(parseExpression('true && false')).toBe('(formula (formula (literal true)) && (formula (literal false)))');
+    expect(parseExpression('true /\\ false')).toBe('(formula (formula (literal true)) /\\ (formula (literal false)))');
+    expect(parseExpression('true * false')).toBe('(formula (formula (literal true)) * (formula (literal false)))');
+    expect(parseExpression('true ∧ false')).toBe('(formula (formula (literal true)) ∧ (formula (literal false)))');
+});
+
+test('disjunction', () => {
+    expect(parseExpression('true or false')).toBe('(formula (formula (literal true)) or (formula (literal false)))');
+    expect(parseExpression('true | false')).toBe('(formula (formula (literal true)) | (formula (literal false)))');
+    expect(parseExpression('true || false')).toBe('(formula (formula (literal true)) || (formula (literal false)))');
+    expect(parseExpression('true \\/ false')).toBe('(formula (formula (literal true)) \\/ (formula (literal false)))');
+    expect(parseExpression('true + false')).toBe('(formula (formula (literal true)) + (formula (literal false)))');
+    expect(parseExpression('true ∨ false')).toBe('(formula (formula (literal true)) ∨ (formula (literal false)))');
+});
+
+test('xor', () => {
+    expect(parseExpression('true xor false')).toBe('(formula (formula (literal true)) xor (formula (literal false)))');
+    expect(parseExpression('true ^ false')).toBe('(formula (formula (literal true)) ^ (formula (literal false)))');
+    expect(parseExpression('true ⊻ false')).toBe('(formula (formula (literal true)) ⊻ (formula (literal false)))');
+    expect(parseExpression('true ⊕ false')).toBe('(formula (formula (literal true)) ⊕ (formula (literal false)))');
+});
+
+test('implication', () => {
+    expect(parseExpression('true implies false')).toBe('(formula (formula (literal true)) implies (formula (literal false)))');
+    expect(parseExpression('true -> false')).toBe('(formula (formula (literal true)) -> (formula (literal false)))');
+    expect(parseExpression('true => false')).toBe('(formula (formula (literal true)) => (formula (literal false)))');
+    expect(parseExpression('true → false')).toBe('(formula (formula (literal true)) → (formula (literal false)))');
+    expect(parseExpression('true ⟹ false')).toBe('(formula (formula (literal true)) ⟹ (formula (literal false)))');
+});
+
+test('equivalence', () => {
+    expect(parseExpression('true iff false')).toBe('(formula (formula (literal true)) iff (formula (literal false)))');
+    expect(parseExpression('true <-> false')).toBe('(formula (formula (literal true)) <-> (formula (literal false)))');
+    expect(parseExpression('true <=> false')).toBe('(formula (formula (literal true)) <=> (formula (literal false)))');
+    expect(parseExpression('true ↔ false')).toBe('(formula (formula (literal true)) ↔ (formula (literal false)))');
+    expect(parseExpression('true ⟺ false')).toBe('(formula (formula (literal true)) ⟺ (formula (literal false)))');
+});
+
+test('let', () => {
+    expect(parseExpression('let x = true in x')).toBe('(formula (letDecl let (formulaDeclarationList (formulaDeclaration x = (formula (literal true)))) in) (formula x))');
+    expect(parseExpression('let x = true in x and x')).toBe('(formula (letDecl let (formulaDeclarationList (formulaDeclaration x = (formula (literal true)))) in) (formula (formula x) and (formula x)))');
+});
+

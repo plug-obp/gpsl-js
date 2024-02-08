@@ -35,13 +35,13 @@ automatonDecl   : (NFA | BUCHI)? stateDecl ';' initialDecl ';' acceptDecl ';'
                         transitionDecl (';' transitionDecl)*;
 automaton       : letDecl? automatonDecl;
 
-CONJUNCTION: 'and' | '&' | '&&' | '/\\' | '*';
-DISJUNCTION: 'or' | '|' | '||' | '\\/' | '+';
+CONJUNCTION: 'and' | '&' | '&&' | '/\\' | '*' | '∧';
+DISJUNCTION: 'or' | '|' | '||' | '\\/' | '+' | '∨';
 EQUIVALENCE: 'iff' | '<->' | '<=>' | '⟺' | '↔';
 EVENTUALLY: 'eventually' | 'F' | '<>' | '\u25C7' /*♢*/;
 FALSE: 'false' | '0';
 GLOBALLY: 'globally' | 'always' | 'G' | '[]' | '\u2610' /* ☐ */;
-IMPLICATION: 'implies' | '->' | '=>' | '→';
+IMPLICATION: 'implies' | '->' | '=>' | '→' | '⟹';
 IN : 'in';
 LET : 'let' | '\\';
 NEGATION: '!' | '~' | 'not';
@@ -51,7 +51,7 @@ WUNTIL: 'W' | 'WU' | 'weak-until';
 SRELEASE: 'M' | 'SR' | 'strong-release';
 WRELEASE: 'R' | 'WR' | 'weak-release';
 TRUE: 'true' | '1';
-XOR: 'xor' | '^';
+XOR: 'xor' | '^' | '⊻' | '⊕';
 
 NFA: 'nfa';
 BUCHI: 'buchi';
