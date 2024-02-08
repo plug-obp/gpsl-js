@@ -4,7 +4,7 @@ import gpslParser from '../generated/grammar/gpslParser.js';
 import {Context, GPSLSymbolResolver, GPSLSyntaxBuilder} from './gpslSyntaxBuilder.js';
 
 export function antlr4Parser(input) {
-	const chars = new antlr4.InputStream(input);
+	const chars = new antlr4.InputStream(input, true);
 	const lexer = new gpslLexer(chars);
 	const tokens = new antlr4.CommonTokenStream(lexer);
 	return new gpslParser(tokens);
