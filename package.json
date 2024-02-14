@@ -8,7 +8,7 @@
     "generated"
   ],
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [],
   "author": "Ciprian TEODOROV",
