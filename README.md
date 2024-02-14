@@ -1,4 +1,6 @@
 # GPSL Language
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fplug-obp%2Fgpsl-js.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fplug-obp%2Fgpsl-js?ref=badge_shield)
+
 
 ![status](https://github.com/plug-obp/gpsl-js/actions/workflows/node.js.yml/badge.svg) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fplug-obp%2Fgpsl-js.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fplug-obp%2Fgpsl-js?ref=badge_shield&issueType=license) [![codecov](https://codecov.io/gh/plug-obp/gpsl-js/graph/badge.svg?token=B5RJBQN2ZJ)](https://codecov.io/gh/plug-obp/gpsl-js)
 
@@ -13,3 +15,7 @@ In GPSL each property is associated with a named variable. All these variables f
 Any *property* can be verified during an analysis run.
 
 More details on GPSL are available at <http://www.obpcdl.org/gpsl/>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fplug-obp%2Fgpsl-js.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fplug-obp%2Fgpsl-js?ref=badge_large)
