@@ -184,11 +184,11 @@ test('linked declarations with let', () => {
 });
 
 test('automaton', () => {
-    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 [true] s0 }')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 [ (formula (literal true)) ] s0)))))');
+    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 [true] s0')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 [ (formula (literal true)) ] s0)))))');
 });
 
 test('automaton prio', () => {
-    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 5 [true] s0 }')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 5 [ (formula (literal true)) ] s0)))))');
-    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 true [true] s0 }')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 true [ (formula (literal true)) ] s0)))))');
-    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 false [true] s0 }')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 false [ (formula (literal true)) ] s0)))))');
+    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 5 [true] s0')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 5 [ (formula (literal true)) ] s0)))))');
+    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 true [true] s0')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 true [ (formula (literal true)) ] s0)))))');
+    expect(parseDeclarations('a = states s0; initial s0; accept s0; s0 false [true] s0')).toBe('(block (formulaDeclaration a = (automaton (automatonDecl (stateDecl states s0) ; (initialDecl initial s0) ; (acceptDecl accept s0) ; (transitionDecl s0 false [ (formula (literal true)) ] s0)))))');
 });
