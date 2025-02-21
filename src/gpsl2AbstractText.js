@@ -48,7 +48,9 @@ export class GPSLToAbstractText extends GPSLVisitor {
         return `(${element.left.accept(this, input)} || ${element.right.accept(this, input)})`;
     }
     visitExclusiveDisjunction(element, input) {
-        return `(${element.left.accept(this, input)} xor ${element.right.accept(this, input)})`;
+        //xor is not supported by LTL3BA, use the xor enconding instead : (!a && b) || (a && !b)
+        // return `(${element.left.accept(this, input)} xor ${element.right.accept(this, input)})`;
+        return `((!${element.left.accept(this, input)} && ${element.right.accept(this, input)}) || (${element.left.accept(this, input)} && !${element.right.accept(this, input)}))`;
     }
     visitImplication(element, input) {
         return `(${element.left.accept(this, input)} -> ${element.right.accept(this, input)})`;
